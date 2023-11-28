@@ -1,0 +1,35 @@
+evaluate:
+  data_paths:
+    features: data/X_test.csv
+    label: results/y_test_mice_non_rounded.csv
+  run: true
+train:
+  cross_validation: 5
+  data_paths:
+    features: data/X_train.csv
+    label: data/y_train.csv
+  model_config: {}
+  model_type: linear
+  preprocessing:
+    execution_order:
+    - imputation
+    - outliers_detection
+    - feature_selection
+    feature_selection:
+      arguments:
+        alpha: 0.7
+      method: lasso
+    imputation:
+      arguments:
+        estimator_params:
+          max_depth: 5
+          n_estimators: 135
+        mice_params:
+          max_iter: 13
+        num_corr_features: 7
+      method: mice
+    outliers_detection:
+      arguments: {}
+      method: z_score
+    scale: true
+  results_path: results/overview_non_rounded_r2.csv

@@ -1,0 +1,31 @@
+train:
+    data_paths:
+        features: data/X_train.csv
+        label: data/y_train.csv
+    preprocessing:
+        scale: true
+        imputation:
+            method: knn
+            arguments:
+                n_neighbors: 20
+        outliers_detection:
+            method: isolation_forest
+            arguments: {}
+        feature_selection:
+            method: lasso
+            arguments: 
+                alpha: 0.9
+        execution_order:
+            - imputation
+            - outliers_detection
+            - feature_selection               
+    model_type: krr
+    model_config: {kernel: 'rbf', gamma: 0.0058417731099124, alpha: 0.1}
+    cross_validation: 5
+    results_path: results/overview.csv
+
+evaluate:
+    run: True
+    data_paths:
+        features: data/X_test.csv
+        label: data/y_test_rbf.csv

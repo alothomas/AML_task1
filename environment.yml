@@ -1,0 +1,23 @@
+name: aml_task1
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy=1.23
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyter
+  - nb_conda_kernels
+  - umap-learn
+  - bokeh
+  - datashader
+  - scikit-image
+  - holoviews
+  - colorcet
+  - pytorch
+  - torchvision
+  - ax-platform
+  - xgboost
